@@ -1,0 +1,112 @@
+<div class="container">
+  <br>
+<h1>Add Product</h1>
+  <div class="">
+    <!-- Success message -->
+    <div class="alert alert-success" *ngIf="showSucessMessage">
+      Saved successfully
+    </div>
+
+<!-- FIRE CODE -->
+<div class="container mt-5 mb-5">
+  <div class="row">
+ 
+          
+            
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Photos</span>
+      </div>
+      <div class="custom-file">
+
+        <input class="custom-file-input" type="file" #fileInput ng2FileSelect multiple [uploader]="uploader" />
+        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+      </div>
+
+    </div>     
+
+    <div class="col-md-9 mt-5">
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let item of uploader.queue">
+            <td>
+              {{ item?.file?.name }}
+            </td>
+            <td>
+              {{ item?.file?.size/1024/1024 | number:'.2' }} MB
+            </td>
+            <td>
+        
+       <button style="background-color: Transparent;
+              background-repeat:no-repeat;
+              border: none;
+              cursor:pointer;
+              overflow: hidden;
+              outline:none" type="button"  (click)="item.remove()">
+         <span class="glyphicon glyphicon-trash"></span> 
+       <i color="red" class="fas fa-trash-alt fa-lg"></i>
+        </button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button style="color:red" *ngIf="uploader.queue.length" type="button" class="btn btn-light btn-sm"
+      (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+      <span class="glyphicon glyphicon-trash"></span> Remove all
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- END FIRE CODE -->
+
+    <form #prodUpForm="ngForm" (ngSubmit)="prodUpForm.valid && onsubmit(prodUpForm)">
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Product Name</label>
+        <input type="text" class="form-control" #productName="ngModel" [(ngModel)]="productname"
+          name="productName" required [ngClass]="{'is-invalid' :prodUpForm.submitted && !productName.valid }"
+          placeholder="Enter Product Name">
+
+        <div *ngIf="prodUpForm.submitted && !productName.valid">
+          <label class="validation-message">This field is required.</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label for="formGroupExampleInput">Availablity</label>
+      <select   #Availablity="ngModel"  name="Availablity"  [(ngModel)]="stock"  class="browser-default custom-select">         
+          <option selected value="Available">Available</option>
+          <option value="Not Available">Not Available</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="formGroupExampleInput">Price</label>
+        <input type="number" #price="ngModel" [(ngModel)]="pPrice" name="price"
+          class="form-control" required [ngClass]="{'is-invalid' :prodUpForm.submitted && !price.valid }"
+          placeholder="Enter Product Price">
+        <div *ngIf="prodUpForm.submitted && !price.valid">
+          <label class="validation-message">This field is required.</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea rows="3" type="text" class="form-control" #description="ngModel"
+          [(ngModel)]="des" name="description" required
+          [ngClass]="{'is-invalid' :prodUpForm.submitted && !description.valid }"></textarea>
+        <div *ngIf="prodUpForm.submitted && !description.valid">
+          <label class="validation-message">This field is required.</label>
+        </div>  
+      </div>
+
+      <button  [disabled]="!uploader.getNotUploadedItems().length" type="submit" class="btn btn-primary  ">Done</button>
+
+    </form>
+  </div>
+</div>
+  <br>
+
+  <hr>

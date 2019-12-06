@@ -1,0 +1,325 @@
+<div class="container">
+
+
+
+
+  <div class="row">
+
+    <div class="col-md-8">
+
+      <h1 class="my-4">Change Slider box
+      </h1>
+
+
+      <div class="card mb-4">
+          
+
+
+       
+          <div class="alert alert-success" *ngIf="showSucessMessage_s">
+            Saved successfully
+          </div>
+        <div style="margin:20px" > 
+
+          <form>
+                  
+                  
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon02">Photos</span>
+              </div>
+              <div class="custom-file">
+      
+                <input type="file" #fileUploader (change)="onFileSelectd_s($event)"   class="custom-file-input" name="avatar2"  />
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+      
+            </div>    
+    
+            <div class="col-md-8">
+      
+              <table class="table">
+      
+                <tbody *ngIf="selectedFile_s" >
+                  <tr >
+                    <td><strong>{{ selectedFile_s.name }}</strong></td>
+      
+                    <td nowrap>{{ selectedFile_s.size/1024/1024 | number:'.2' }} MB</td>
+                    <td>
+                      <div class="progress" style="margin-bottom: 0;width: 100px;">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': selectedFile_s.progress + '%' }"></div>
+                      </div>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+      
+
+            </div>
+      <br>
+    
+            <div class="form-group">
+              <label for="exampleInputEmail2">Title</label>
+              <input  #title_s="ngModel" [(ngModel)]="Title_s"  type="text" class="form-control"   name="title_s" 
+                placeholder="Title">
+            </div>
+
+
+
+            <div class="form-group">
+              <label for="exampleInputEmail2">Description</label>
+              <input  #Description="ngModel" [(ngModel)]="des_s" type="text" class="form-control"   name="Description" 
+                placeholder="Description">
+            </div>
+
+            <br>
+
+
+      
+
+    <br>
+      
+      
+            <button  type="button"  class="btn btn-primary" (click)="onSubmit_s()" >Done</button>
+      
+          </form>
+
+        </div>
+
+
+    
+
+
+
+          
+        
+
+<br>  
+      </div>
+
+    </div>
+
+
+
+    
+    <div class="col-md-4">
+<hr>
+
+        <div style="margin: 5px;" >          <div class="custom-control custom-checkbox">
+            <input  [(ngModel)]="this.userService.theTheme.sbox" name="tt" #tt="ngModel"  type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+            <label class="custom-control-label" for="customCheck1"> Slider Box Is   <span class="text-success" ng *ngIf="this.userService.theTheme.sbox">Turned On</span>
+              <span  class="text-danger" ng *ngIf="!this.userService.theTheme.sbox">Turned Off</span> 
+            </label>
+          </div>
+       
+          <button (click)="setTheme(this.userService.theTheme.sbox)" type="button" class="btn btn-primary btn-sm">Done</button>
+   
+        </div>
+      <div class="card my-4">
+
+
+        <h5 class="card-header"><i class="fas fa-bars"></i>  &nbsp;  Mobile    
+          
+   
+
+             
+          <i style="float:right" class="fas fa-shopping-cart"></i></h5>
+ 
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li  data-target="#carouselExampleIndicators" data-slide-to="0" class="active xxx"></li>
+                  <!-- <i style="  color: #fff"  class="fas fa-circle"></i> -->
+                 <li class="xxx" *ngFor="let s of sm " data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+
+                </ol>
+
+                <div class="carousel-inner">
+
+                 <div  class="carousel-item active">
+                        <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4-frbAQNn_3G_mQBumMqVDUy3BDN1JgYj9yjqc4VidR5a99JAHw"
+                          alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>Title 1</h5>
+                          <p>description</p>
+                        </div>
+                      </div>
+         
+                      
+                      <div  *ngFor="let s of sm " class="carousel-item">
+                        <img class="d-block w-100" src="{{url}}/imgs/{{s.img}}"
+                          alt="Second slide"> 
+                        <div class="carousel-caption d-none d-md-block">
+                            <button (click)="deletesimg(s._id)" style="float: right" type="button" class="btn btn-danger btn-sm">delete</button>
+                         <div style="float: left; width:'50%' " > 
+                          <h5  >{{s.title}}</h5>
+                          <p   >{{s.description}}</p>
+                        </div>
+                        </div>
+
+                      </div>
+ 
+                </div>
+
+
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+
+              </div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+      </div>
+
+
+
+
+
+
+
+      
+    </div>
+
+  </div>
+
+
+</div>
+<br>
+<hr>
+<br>
+<div class="container">
+
+    <div class="row">
+  
+
+      <div class="col-md-8">
+  
+        <h1 class="my-4">Initial Page
+        </h1>
+  
+        <div class="card mb-4">
+          <div class="alert alert-success" *ngIf="showSucessMessage">
+            Saved successfully
+          </div>
+        <div style="margin:20px" > 
+
+          <form>
+                  
+                  
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Photos</span>
+              </div>
+              <div class="custom-file">
+      
+                <input type="file" (change)="onFileSelectd($event)"   class="custom-file-input" name="avatar"  />
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+      
+            </div>    
+    
+            <div class="col-md-8">
+      
+              <table class="table">
+      
+                <tbody *ngIf="selectedFile" >
+                  <tr >
+                    <td><strong>{{ selectedFile.name }}</strong></td>
+      
+                    <td nowrap>{{ selectedFile.size/1024/1024 | number:'.2' }} MB</td>
+                    <td>
+                      <div class="progress" style="margin-bottom: 0;width: 100px;">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': selectedFile.progress + '%' }"></div>
+                      </div>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+      
+
+            </div>
+      <br>
+    
+            <div class="form-group">
+              <label for="exampleInputEmail1">Title</label>
+              <input  #title="ngModel" [(ngModel)]="Title" type="text" class="form-control"   name="title" 
+                placeholder="Enter App Title">
+            </div>
+
+            <br>
+
+            <div style="width: 350px" class="form-group">
+              <label class="control-label">Text colour</label>
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-palette"></i></span>
+                  </div>
+                  <input type="text" #color="ngModel" name="color" [(ngModel)]="textcolor"
+                    class="form-control" aria-label="Amount (to the nearest dollar)">
+                  <div class="input-group-append">
+                    <input [(colorPicker)]="textcolor"
+                      [style.background]="textcolor" />
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+
+    <br>
+      
+      
+            <button  type="button"  class="btn btn-primary" (click)="onSubmit()" >Done</button>
+      
+          </form>
+
+        </div>
+
+
+        </div>
+  
+      </div>
+  
+  
+  
+    
+      <div class="col-md-4">
+            
+        <div  class="card my-4">
+            <div class="carousel-item active">
+              
+                <img class="d-block w-100" src="{{url}}/imgs/{{imgname}}" alt="Third slide">
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                  <h1  [ngStyle]="{ 'color':textcolor ,
+                ' font-weight':'bold' }">{{Title}}</h1>
+                  <br>
+                  <div class="text-center">
+                      <div class="spinner-border  text-dark" role="status">
+                      </div>
+                    </div>
+                <br>
+                    <p class="text-dark" >Loading</p>
+                    <br><br><br><br>
+                </div>
+
+        </div>
+  
+
+      </div>
+  
+    </div>
+
+  
+  </div>
+
+

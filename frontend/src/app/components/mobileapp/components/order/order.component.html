@@ -1,0 +1,76 @@
+<div class="mainDiv">
+  
+
+<br>
+
+
+  <div class="container">
+      <div class="row">
+        <div class="col-sm">
+            <h1>orders</h1>
+        </div>
+        <div class="col-sm">
+         
+        </div>
+        <div class="col-md-7">
+     
+            <div class="container h-100">
+                <div class="d-flex h-100">
+                  <div class="searchbar">
+                    <input class="search_input" type="email"name="search" [(ngModel)]="searchText" placeholder="Search...">
+                    <a  class="search_icon"><i class="fas fa-search"></i></a>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+      </div>
+    </div>
+
+
+<br>
+
+
+<table class="table tableWidth table-hover" >
+  <thead> 
+   <tr>
+      <th scope="col">OrderID</th>
+      <th scope="col">Date</th>
+      <th scope="col">Name</th>
+      <th scope="col">Handling By</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+   </tr>
+   </thead >
+<tr  *ngFor="let u of order  | filter:searchText">
+    
+
+    <td>
+        {{u.orderid }}
+     
+       </td>
+  <td>
+   {{u.datetime }}
+
+  </td>
+  <td>
+    {{u.customername}}
+  </td>
+  
+<td><span class="text-primary" >{{u.haddlingby}}</span></td>
+  <td>
+    <div *ngIf="u.orderstatus=='Canceled'" style="background-color: #eb47419c;border-radius: 15px; padding: 4px; width: 87px;" >  <strong>  {{u.orderstatus}}</strong></div>
+    <div *ngIf="u.orderstatus=='Pending'" style="background-color: #ec821198;border-radius: 15px; padding: 4px; width: 76px;" > <strong>  {{u.orderstatus}}</strong></div>
+    <div *ngIf="u.orderstatus=='Completed'" style="background-color: #20be62a4;border-radius: 15px; padding: 4px; width: 100px;" > <strong>  {{u.orderstatus}}</strong></div>
+  </td>
+    
+    
+    <td>
+       <button type="button" (click)="editOrder(u._id)" class="btnB btn btn-sm btn-outline-dark" ><i class="far fa-eye"></i>&nbsp;View</button>
+    </td>
+
+</tr>
+</table>
+
+</div>
+<br>

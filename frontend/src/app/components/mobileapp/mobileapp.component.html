@@ -1,0 +1,38 @@
+
+  <div [class.toggled]="classApplied"   class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right sidebarHeght" id="sidebar-wrapper">
+
+      <div class="sidebar-heading">MENU        
+         <button style="border:none;margin-left:100px;" class="btn"  (click)="toggleClass()"  id="menu-toggle"><i class="fas fa-angle-double-left"></i></button>
+         
+        </div>
+      <div class="list-group list-group-flush">
+        <a routerLinkActive="active1" routerLink="/dashboard"   class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a  routerLinkActive="active1" routerLink="/order"  class="list-group-item list-group-item-action bg-light">Orders</a>
+        <a routerLinkActive="active1"  routerLink="/products" class="list-group-item list-group-item-action bg-light">Product</a>
+        <a  routerLinkActive="active1" routerLink="/sales"   class="list-group-item list-group-item-action bg-light">Sales</a>
+        <a routerLinkActive="active1" routerLink="/pref" class="list-group-item list-group-item-action bg-light">Preferences</a>
+        <a routerLinkActive="active1" routerLink="/template" class="list-group-item list-group-item-action bg-light">Select Template</a>
+        <a routerLinkActive="active1" routerLink="/#"  class="list-group-item list-group-item-action bg-light">Help</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <button  *ngIf="classApplied"  class="btn menuB" (click)="toggleClass()"  id="menu-toggle"><i class="fas fa-bars cl"></i></button>
+      
+        
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+ 
+  <!-- /#wrapper -->
+

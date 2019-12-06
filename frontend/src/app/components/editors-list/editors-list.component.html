@@ -1,0 +1,36 @@
+<div class="mainDiv">
+   <div class="btn-h1"> <h1>Editors List</h1>
+<button type="button" (click)="openDialog()"  class="btn btn-secondary btnPlace btn-sm"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;Add New Editor</button>
+</div>   
+
+<table class="table tableWidth table-hover" >
+   <thead> 
+    <tr>
+       <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name</th>
+       <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email</th>
+       <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action</th>
+    </tr>
+    </thead >
+<tr *ngFor="let u of user">
+     
+   <td  *ngIf="u.usertype!='admin'">
+    {{u.fullName}}
+   </td>
+
+   <td *ngIf="u.usertype!='admin'">
+    {{u.email}}
+   </td>
+     
+
+     
+     <td *ngIf="u.usertype!='admin'"> 
+          <button type="button" class="btnB btn btn-sm btn-outline-dark" (click)="editUser(u._id)" ><i class="fas fa-pencil-alt"></i>&nbsp;edit</button>
+          <button type="button" class="btnB del-btn btn btn-sm btn-outline-danger" (click)="openConfirmationDialog(u._id)" ><i class="fas fa-trash-alt"></i>&nbsp;delete</button>
+     </td>
+
+
+</tr>
+</table>
+
+</div>
+<br>l

@@ -1,0 +1,31 @@
+.x:hover{
+    border-radius: 7px;
+   background: rgba(90, 63, 63, 0.062);
+}
+.x{
+    margin-right: 2px;
+}
+.active1{
+    font-weight: bold;
+    border-radius: 7px;
+    background: rgba(90, 63, 63, 0.055);
+ 
+}
+
+.dropD{
+margin-top: 5px;
+    width:190px;
+    background-color: rgb(248, 249,250);
+    border-color: rgb(248, 249,250); 
+}
+.namePara{
+    letter-spacing: 2px;
+    color: rgb(29, 27, 27);
+    font-size: 12px;
+    margin: auto 2px;
+
+}
+.DropdounHover:hover{
+    background-color: #eee
+}
+

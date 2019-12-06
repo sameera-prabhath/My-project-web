@@ -1,0 +1,12 @@
+.sform{
+    margin:0 auto;
+    padding: 20px 100px;
+    width:700px;
+    border-radius:30px
+}
+h1{
+   text-align: center;
+}
+form{
+    text-align: center
+}

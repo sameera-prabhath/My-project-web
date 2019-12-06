@@ -1,0 +1,72 @@
+<div class="mainDiv">
+  
+
+  <br>
+  
+  
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+              <h1>Pending Orders  </h1>
+          </div>
+          <div class="col-sm">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">Total: {{noOfsales}}</div>
+          </div>
+          <div class="col-md-7">
+       
+              <div class="container h-100">
+                  <div class="d-flex h-100">
+                    <div class="searchbar">
+                      <input class="search_input" type="email"name="search" [(ngModel)]="searchText" placeholder="Search...">
+                      <a  class="search_icon"><i class="fas fa-search"></i></a>
+                    </div>
+                  </div>
+                </div>
+  
+          </div>
+        </div>
+      </div>
+  
+  
+  <br>
+  
+  
+  <table class="table tableWidth table-hover" >
+    <thead> 
+     <tr>
+        <th scope="col">Order ID  </th>
+        <th scope="col">Date</th>
+        <th scope="col">Name</th>
+        <th scope="col">handling By</th>
+  
+  
+        <th scope="col"></th>
+     </tr>
+     </thead >
+  <tr  *ngFor="let u of sales  | filter:searchText">
+      
+    <td>
+      {{u.orderid }}
+ 
+     </td>
+    <td>
+     {{u.datetime }}
+
+    </td>
+    <td>
+      {{u.customername}}
+    </td>
+   
+  
+
+    <td><span class="text-primary" >{{u.haddlingby}}</span></td>
+      
+      <td>
+         <button type="button" (click)="editOrder(u._id)" class="btnB btn btn-sm btn-outline-dark" ><i class="far fa-eye"></i>&nbsp;View</button>
+      </td>
+  
+  </tr>
+  </table>
+  
+  </div>
+  <br>

@@ -1,0 +1,21 @@
+
+<h4 style="text-align:center"> Sales Of This Year
+  <br/><br/>
+
+  </h4><br/>
+<div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="mbarChartLabels"
+            [options]="barChartOptions"
+            [colors]="barChartColors"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+            </canvas>
+  </div>
+
+
+</div>

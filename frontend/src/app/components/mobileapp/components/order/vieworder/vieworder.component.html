@@ -1,0 +1,201 @@
+<div class="container">
+        <h4>Order ID: {{order.orderid}}</h4>
+        <button *ngIf="order.haddlingby=='No One'" (click)=" haddle()" class="btn btn-info" >handle ordder</button> <p><strong>Haddling by : </strong><span class="text-primary" >{{order.haddlingby}}</span> </p>
+        
+       
+<hr>        <br>
+    <div class="row">
+      <div class="col-sm">
+          <div class="col-xs-12 col-sm-8">
+              <h5>Customer Name</h5>
+              <p><strong> {{order.customername}}</strong>  </p>
+              <p> {{order.datetime}} </p>
+
+              
+          </div>   
+      </div>
+      <div class="col-sm">
+          <div class="col-xs-12 col-sm-10">
+             
+            <h5>Details</h5>
+            
+
+
+            <table class="table table-borderless">
+            <tbody>
+                <tr>
+                  <th scope="row"> <strong>Shipping Address</strong></th>
+                  <td>{{order.deliveraddress}} </td>
+                </tr>
+                <tr>
+                  <th scope="row"> <strong>Email</strong></th>
+                  <td>  {{cus_data.email}}</td>
+                </tr>
+                <tr>
+                  <th scope="row"> <strong>Tel</strong> </th>
+                  <td>{{order.telephone}}</td>
+
+                </tr>
+              </tbody>
+            </table>
+   
+          </div>   
+      </div>
+      <div class="col-sm">
+          <div class="col-xs-12 col-sm-8">
+              <h5>Order Status</h5>
+              
+              <div *ngIf="order.orderstatus=='Canceled'" style="background-color: #eb47419c;border-radius: 15px; padding: 4px; width: 87px;" >  <strong>  {{order.orderstatus}}</strong></div>
+              <div *ngIf="order.orderstatus=='Pending'" style="background-color: #ec821198;border-radius: 15px; padding: 4px; width: 76px;" > <strong>  {{order.orderstatus}}</strong></div>
+              <div *ngIf="order.orderstatus=='Completed'" style="background-color: #20be62a4;border-radius: 15px; padding: 4px; width: 100px;" > <strong>  {{order.orderstatus}}</strong></div>
+          
+   
+          </div>   
+      </div>
+    </div>
+  </div>
+<br>
+
+<div class="container">
+  <div class="row">
+      <div class="col-sm-12 col-md-12 col-md-offset-1">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>Product</th>
+                      <th class="text-center"></th>
+                      <th>Quantity</th>
+                      <th class="text-center">Price</th>
+                      <th class="text-center">Total</th>   
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr    *ngFor="let p of product ;let i=index"    >
+                      <td class="col-sm-8 col-md-6">
+                      <div class="media">
+                          <a class="thumbnail pull-left" href="#"> <img class="media-object" src="{{p.imgs[0]}}" style="width: 72px; height: 72px;"> </a>
+                          <div class="media-body">
+                              <h4 class="media-heading"> {{p.productName}} </h4>
+                              <span>Status: </span>      
+                                <span *ngIf="p.availablity=='Not Available'" class="text-danger"><strong>{{p.availablity}}</strong></span>
+                            <span *ngIf="p.availablity=='Available'" class="text-success"><strong>{{p.availablity}}</strong></span>
+                          </div>
+                      </div></td>
+                      <td class="col-sm-1 col-md-1" style="text-align: center">
+                        
+                      </td>
+                      <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <strong>{{order.orderitems[i].quantity}}</strong>
+                      </td>
+                      <td class="col-sm-1 col-md-1 text-center"><strong>Rs.{{p.price.toFixed(2)}}</strong></td>
+                      <td class="col-sm-1 col-md-1 text-center"><strong>Rs.{{(order.orderitems[i].quantity*p.price).toFixed(2)}}</strong></td>
+     
+                  </tr>
+            
+              </tbody>
+          </table>
+
+<br>
+          <table class="table table-borderless">
+
+              <tbody>
+
+
+
+
+                  <tr>
+                      <td>   </td>
+                      <td>   </td>
+                      <td>   </td>
+                      <td><h5> <b> Total</b></h5></td>
+                      <td class="text-right"><h5><strong>Rs.{{total.toFixed(2)}}</strong></h5></td>
+                  </tr>
+         
+     
+                  <tr *ngIf="order.orderstatus=='Pending'&& order.haddlingby!='No One'" >  
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td class="text-right" >
+                          <button style="margin-right: 5px" (click)="updatepage('Canceled','Order Failed','sorry , your order has been Canceled. Order ID:')" type="button" class="btn btn-danger">
+                              Cancel
+                          </button>
+                          <button style="margin-right: 5px" (click)="updatepage('Pending','Order keep Pending','sorry , your order keep Pending. Order ID:')" type="button" class="btn btn-secondary">
+                              Pending
+                         </button>
+                          <button type="button" (click)="updatepage('Completed','order Success','your order shiped. Order ID:')" class="btn btn-info">
+                          Complete 
+                          </button>
+                      </td>
+                  </tr>
+
+              </tbody>
+            </table>
+      </div>
+  </div>
+</div>
+
+
+<hr>
+
+
+
+
+<div class="container">    
+            
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title"> <h5> Send email To customer</h5></div>
+                <hr>
+            </div>  
+            <div class="panel-body" >
+                <form method="post" action=".">
+ 
+
+                  
+                   
+                        
+                        
+                        
+                        <div  class="form-group required">
+                            <label for="id_username" class="control-label col-md-4  requiredField"> Subject </label>
+                            <div class="controls col-md-8 ">
+                                <input class="input-md  textinput textInput form-control" #sub="ngModel" [(ngModel)]="msubject"  name="sub"  style="margin-bottom: 10px" type="text" />
+                            </div>
+                        </div>
+                        
+
+
+                        <div  class="form-group required">
+                                <label  class="control-label col-md-4  requiredField"> msg </label>
+                                <div class="controls col-md-8 ">
+                                        <textarea rows="3" type="text" class="form-control" #msgtext="ngModel"
+                                        [(ngModel)]="mtext" name="msgtext" required></textarea>                
+                                                   </div>
+                            </div>
+                            
+                            
+ 
+                        
+                        
+                    
+                        
+     <p>&nbsp; </p>
+              
+                        <div class="form-group"> 
+                            <div class="aab controls col-md-4 "></div>
+                            <div class="controls col-md-8 ">
+                             <button (click)="msg()" type="button" class="btn btn-primary btn-sm">Send</button>
+                            </div>
+                        </div> 
+                            
+                    </form>
+
+             
+            </div>
+        </div>
+    </div> 
+</div>
+    

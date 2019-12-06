@@ -1,0 +1,32 @@
+h1{
+    float: left;
+    margin: 25px 10px;
+    width: 300px;
+}
+.mainDiv{
+    margin: 0 20px;
+    min-height:570px;
+}
+
+.del-btn{
+    margin-left: 10px;
+}
+.btnB{
+border: 0ch;
+}
+
+.tableWidth{
+    margin:  0 auto;
+    width: 90%;
+}
+
+.btn-h1{
+    height:98px;
+}
+.btnPlace{
+    margin:33.5px 0; 
+    float: left;
+}
+td{
+    width:30%
+}

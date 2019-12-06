@@ -1,0 +1,48 @@
+<div class="login-page">
+
+  <div class="form">
+
+    <H5>RESET PASSWORD</H5>
+    <br>
+    <div class="input-group-append">
+
+      <button class="nput-group-text btn btn-link" (click)='toggleShow()'><i class="fas fa-eye"></i>&nbsp;
+        {{sh}}</button>
+
+    </div>
+
+    <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onc()">
+     
+     
+      <div class="input-group mb-3">
+        <input type="{{type}}" #password="ngModel" [(ngModel)]="pw" name="password" class="form-control"
+          placeholder="New Password" placeholder="New Password" minlength="4" required
+          [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
+      </div>
+      <div *ngIf="signUpForm.submitted && password.errors">
+        <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+        <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+      </div>
+
+
+
+
+
+      <div class="input-group mb-3">
+        <input type="{{type}}" #cPassword="ngModel" [(ngModel)]="cpw" name="cPassword" class="form-control"
+          placeholder="Confirm Password" pattern="{{ password.value }}" required
+          [ngClass]="{'invalid-textbox' : signUpForm.submitted && !cPassword.valid }">
+      </div>
+      <div *ngIf="signUpForm.submitted  && cPassword.errors ">
+        <label *ngIf="cPassword.errors.required" class="validation-message">This field is required.</label>
+        <label *ngIf="cPassword.errors.pattern" class="validation-message">confirm password dose not match</label>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Done</button>
+  
+    
+    </form>
+   
+  </div>
+</div>

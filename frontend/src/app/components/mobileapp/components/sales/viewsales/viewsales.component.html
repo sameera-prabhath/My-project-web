@@ -1,0 +1,121 @@
+<div class="container">
+
+    <h4>Order ID: {{order.orderid}}</h4>
+    <p><strong>Haddled by : </strong><span class="text-primary" >{{order.haddlingby}}</span> </p>
+ 
+
+
+    <div class="row">
+      <div class="col-sm">
+          <div class="col-xs-12 col-sm-8">
+              <h5>Customer Name</h5>
+              <p><strong> {{order.customername}}</strong>  </p>
+              <p> {{order.datetime}} </p>
+
+              
+          </div>   
+      </div>
+      <div class="col-sm">
+          <div class="col-xs-12 col-sm-10">
+             
+            <h5>Details</h5>
+            
+
+
+            <table class="table table-borderless">
+            <tbody>
+                <tr>
+                  <th scope="row"> <strong>Shipping Address</strong></th>
+                  <td>{{order.deliveraddress}} </td>
+                </tr>
+                <tr>
+                  <th scope="row"> <strong>Email</strong></th>
+                  <td>  {{cus_data.email}}</td>
+                </tr>
+                <tr>
+                  <th scope="row"> <strong>Tel</strong> </th>
+                  <td>{{order.telephone}}</td>
+
+                </tr>
+              </tbody>
+            </table>
+   
+          </div>   
+      </div>
+      <div class="col-sm">
+          <div class="col-xs-12 col-sm-8">
+              <h5>Order Status</h5>
+              
+              <div *ngIf="order.orderstatus=='Canceled'" style="background-color: #eb47419c;border-radius: 15px; padding: 4px; width: 87px;" >  <strong>  {{order.orderstatus}}</strong></div>
+              <div *ngIf="order.orderstatus=='Pending'" style="background-color: #ec821198;border-radius: 15px; padding: 4px; width: 76px;" > <strong>  {{order.orderstatus}}</strong></div>
+              <div *ngIf="order.orderstatus=='Completed'" style="background-color: #20be62a4;border-radius: 15px; padding: 4px; width: 100px;" > <strong>  {{order.orderstatus}}</strong></div>
+          
+   
+          </div>   
+      </div>
+    </div>
+  </div>
+<br>
+
+<div class="container">
+  <div class="row">
+      <div class="col-sm-12 col-md-12 col-md-offset-1">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>Product</th>
+                      <th class="text-center"></th>
+                      <th>Quantity</th>
+                      <th class="text-center">Price</th>
+                      <th class="text-center">Total</th>   
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr    *ngFor="let p of product ;let i=index"    >
+                      <td class="col-sm-8 col-md-6">
+                      <div class="media">
+                          <a class="thumbnail pull-left" href="#"> <img class="media-object" src="https://firebasestorage.googleapis.com/v0/b/ecoml2s1.appspot.com/o/firebaseSampleTest%2F000749-online-store-logos-design-free-online-E-commerce-cart-logo-maker-02.png1569898545971?alt=media&token=a64ee3a0-c3d8-4ab8-94ba-0c492cf5dbd9" style="width: 72px; height: 72px;"> </a>
+                          <div class="media-body">
+                              <h4 class="media-heading"> {{p.productName}} </h4>
+                              <span>Status: </span>      
+                                <span *ngIf="p.availablity=='Not Available'" class="text-danger"><strong>{{p.availablity}}</strong></span>
+                            <span *ngIf="p.availablity=='Available'" class="text-success"><strong>{{p.availablity}}</strong></span>
+                          </div>
+                      </div></td>
+                      <td class="col-sm-1 col-md-1" style="text-align: center">
+                        
+                      </td>
+                      <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <strong>{{order.orderitems[i].quantity}}</strong>
+                      </td>
+                      <td class="col-sm-1 col-md-1 text-center"><strong>Rs.{{p.price.toFixed(2)}}</strong></td>
+                      <td class="col-sm-1 col-md-1 text-center"><strong>Rs.{{(order.orderitems[i].quantity*p.price).toFixed(2)}}</strong></td>
+     
+                  </tr>
+            
+              </tbody>
+          </table>
+
+<br>
+          <table class="table table-borderless">
+
+              <tbody>
+
+
+
+
+                  <tr>
+                      <td>   </td>
+                      <td>   </td>
+                      <td>   </td>
+                      <td><h5> <b> Total</b></h5></td>
+                      <td class="text-right"><h5><strong>Rs.{{total.toFixed(2)}}</strong></h5></td>
+                  </tr>
+
+
+              </tbody>
+            </table>
+      </div>
+  </div>
+</div>
+
